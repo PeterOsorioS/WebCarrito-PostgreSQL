@@ -19,10 +19,6 @@ namespace AccesoDatos.Data.Inicializador
             try
             {
                 await _db.Database.EnsureCreatedAsync();
-                if (_db.Database.GetPendingMigrations().Count() > 0)
-                {
-                    await _db.Database.MigrateAsync();
-                }
             }
             catch (Exception)
             {
