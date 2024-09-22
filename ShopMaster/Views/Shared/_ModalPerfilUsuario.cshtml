@@ -1,0 +1,64 @@
+﻿@model Entidad.Usuario
+<div class="modal fade" id="modal_perfil_usuario" role="dialog" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form id="editUserForm" asp-area="Resumen" asp-controller="Usuarios" asp-action="EditarUsuario" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" id="IdUsuario" name="IdUsuario" asp-for="IdUsuario" />
+                <input type="hidden" id="clave" name="Clave" asp-for="Clave" />
+                <input type="hidden" id="claveC" name="ClaveC" asp-for="ConfirmarClave" />
+
+                <!-- Modal Header -->
+                <div class="modal-header bg-blue text-white">
+                    <h5 class="modal-title mx-auto">Perfil Usuario</h5>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <!-- Icono de usuario centrado -->
+                    <div class="text-center">
+                        <i class="fa-solid fa-circle-user mb-4" style="font-size: 150px; color: #6c757d;"></i>
+                    </div>
+
+                    <!-- Información del usuario -->
+                    <div class="container">
+                        <!-- Nombres -->
+                        <div class="row mb-3">
+                            <div class="col-12 col-sm-4 text-sm-end text-center">
+                                <strong>Nombres:</strong>
+                            </div>
+                            <div class="col-12 col-sm-8 text-sm-start text-center">
+                                <span>@Model.Nombres</span>
+                            </div>
+                        </div>
+
+                        <!-- Apellidos -->
+                        <div class="row mb-3">
+                            <div class="col-12 col-sm-4 text-sm-end text-center">
+                                <strong>Apellidos:</strong>
+                            </div>
+                            <div class="col-12 col-sm-8 text-sm-start text-center">
+                                <span>@Model.Apellidos</span>
+                            </div>
+                        </div>
+
+                        <!-- Correo -->
+                        <div class="row mb-3">
+                            <div class="col-12 col-sm-4 text-sm-end text-center">
+                                <strong>Correo:</strong>
+                            </div>
+                            <div class="col-12 col-sm-8 text-sm-start text-center">
+                                <span>@Model.Correo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

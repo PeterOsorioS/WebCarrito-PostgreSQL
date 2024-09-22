@@ -1,0 +1,41 @@
+﻿@model Entidad.Producto
+
+
+<div class="modal fade" id="modal_detalle_producto" role="dialog" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-fullscreen" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Model.Nombre</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <section class="py-5">
+                    <div class="px-4 px-lg-5 mt-5 container">
+                        <div class="row gx-4 gx-lg-5 align-items-center">
+                            <div class="col-md-6">
+                                <img class="img-fluid mb-5 mb-md-0" src="@Model.RutaImagen" alt="@Model.NombreImagen" />
+                            </div>
+                            <div class="col-md-6">
+                                <div class="small mb-1">@Model.FechaRegistro.ToString("dd/MM/yyyy")</div>
+                                <h1 class="display-5 fw-bolder">@Model.Nombre</h1>
+                                <div class="fs-5 mb-5">
+                                    <span>@Model.Precio.ToString("$#,0")</span>
+                                </div>
+                                <p class="lead">@Html.Raw(Model.Descripcion)</p>
+                                <div class="mt-5">
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <partial name="_BtnCarritoPartial"></partial>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="/js/gestionCompras.js"></script>
+}

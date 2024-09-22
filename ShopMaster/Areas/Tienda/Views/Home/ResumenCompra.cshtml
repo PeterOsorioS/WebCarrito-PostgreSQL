@@ -1,0 +1,81 @@
+﻿@model Entidad.Venta;
+@{
+    ViewData["Title"] = "Resumen de Compra";
+}
+
+<section class="my-5 container-fluid">
+    <div class="row">
+        <div class="col-12-sm">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-center">Resumen de Compra</h3>
+                    <hr class="mt-2 mb-4" />
+
+                    <div class="row">
+                        <!-- Información de la venta -->
+                        <div class="col-lg-6 mb-4">
+                            <h5>Detalles de la Venta</h5>
+                            <table class="table-bordered table">
+                                <tbody>
+                                    <tr>
+                                        <th>Contacto:</th>
+                                        <td>@Model.Contacto</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Dirección:</th>
+                                        <td>@Model.Direccion</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Teléfono:</th>
+                                        <td>@Model.Telefono</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total Productos:</th>
+                                        <td>@Model.TotalProducto</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Monto Total:</th>
+                                        <td>@Model.MontoTotal.ToString("$#,0")</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Detalle de productos -->
+                        <div class="col-lg-6 mb-4 table-responsive">
+                            <h5>Detalles de Productos</h5>
+                            <table class="table-striped table">
+                                <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio Unitario</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.DetalleVenta)
+                                    {
+                                        <tr>
+                                            <td>@item.Producto.Nombre</td>
+                                            <td>@item.Cantidad</td>
+                                            <td>@item.Producto.Precio.ToString("$#,0")</td>
+                                            <td>@item.Total.ToString("$#,0")</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Botón de regreso a la tienda -->
+                    <div class="d-grid">
+                        <a href="@Url.Action("MisCompras", "Home", new { area = "Tienda" })" class="btn btn-danger">
+                            Volver
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

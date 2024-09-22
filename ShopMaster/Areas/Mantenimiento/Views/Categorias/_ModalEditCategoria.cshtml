@@ -1,0 +1,59 @@
+﻿@model Entidad.Categoria
+
+<div class="modal fade" id="modal_edit_categoria" role="dialog" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form id="editCategoryForm" asp-area="Mantenimiento" asp-controller="Categorias" asp-action="EditCategoria" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <input type="hidden" id="IdCategoria" name="IdCategoria" asp-for="IdCategoria" />
+                <input type="hidden" id="FechaRegistro" name="FechaRegistro" asp-for="FechaRegistro" />
+
+                <div class="modal-header bg-blue text-white">
+                    <h5 class="modal-title"><i class="fa-solid fa-layer-group"></i> Editar Categoria</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <label><strong>ID:</strong> @Model.IdCategoria</label>
+                    <div class="form-group">
+                        <label><strong>Descripcion:</strong></label>
+                        <input id="Descripcion" name="Descripcion" asp-for="Descripcion" class="form-control form-control-user" placeholder="Ingresar la descripcion" />
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Activo:</strong></label>
+                        <input id="Activo" name="Activo" type="checkbox" asp-for="Activo" />
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Imagen:</strong></label>
+                        <input type="file" name="archivos" id="subidaArchivo" class="form-control" />
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <div id="mensajeError" class="alert alert-danger" role="alert" style="display: none;">
+                                <!-- Los mensajes de error se mostrarán aquí -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-3 d-flex flex-column align-items-center">
+                        <div class="col-4">
+                            <label><strong>Imagen Actual:</strong></label>
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.RutaImagen))
+                        {
+                            <img src="@Url.Content(Model.RutaImagen)" class="custom-input p-3 mb-3" alt="Imagen Actual" />
+                        }
+                        else
+                        {
+                            <p class="text-muted">No hay imagen disponible</p>
+                        }
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="saveChanges" class="btn btn-secondary">Guardar cambios</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

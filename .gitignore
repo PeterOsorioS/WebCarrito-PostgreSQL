@@ -1,0 +1,41 @@
+# Archivos de configuración de usuario
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Archivos de salida de compilación
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+publish/
+
+# Archivos de configuración de ASP.NET
+*.db
+*.mdf
+*.ldf
+*.ndf
+
+# Archivos de log
+*.log
+
+# Configuraciones de Rider
+.idea/
+*.sln.iml
+
+# Dependencias de NuGet
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+*.psess
+
+# Datos sensibles (puedes personalizar según tu proyecto)
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+
+# Otros
+.vscode/
+.vs/

@@ -1,0 +1,30 @@
+﻿@model Entidad.ViewModel.HomeVm
+<!-- Slider-->
+<div id="sliderImagenes" class="carousel slide">
+    <div class="carousel-inner">
+        @{
+            int cont = 0;
+        }
+
+        @foreach (var slider in Model.Sliders)
+        {
+            var itemDinamico = cont++ == 0 ? "active" : "";
+
+            @if (slider.Activo == true)
+            {
+                <div class="carousel-item @itemDinamico">
+                    <img src="@Url.Content(slider.RutaImagen)" class="d-block w-100">
+                </div>  
+            }
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#sliderImagenes" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#sliderImagenes" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<!-- Fin Slider-->

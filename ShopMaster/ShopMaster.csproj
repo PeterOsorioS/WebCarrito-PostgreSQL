@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="wwwroot\imagenes\productos\imagenes\**" />
+	  <Content Remove="wwwroot\imagenes\productos\imagenes\**" />
+	  <EmbeddedResource Remove="wwwroot\imagenes\productos\imagenes\**" />
+	  <None Remove="wwwroot\imagenes\productos\imagenes\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="Areas\Acceso\Views\Auth\AccessDenied.cshtml" />
+	</ItemGroup>
+	<ItemGroup>
+		<none Include="wwwroot\js\autenticacion.js" />
+		<none Include="wwwroot\js\categoria.js" />
+		<none Include="wwwroot\js\dashboard.js" />
+		<none Include="wwwroot\js\eccommers.js" />
+		<none Include="wwwroot\js\gestionCompras.js" />
+		<none Include="wwwroot\js\marca.js" />
+		<none Include="wwwroot\js\producto.js" />
+		<none Include="wwwroot\js\site.js" />
+		<none Include="wwwroot\js\slider.js" />
+		<none Include="wwwroot\js\usuario.js" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="jQuery" Version="3.7.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="8.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.jQuery.Unobtrusive.Ajax" Version="3.2.6" />
+		<PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="4.0.0" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.4" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Datos\Datos.csproj" />
+		<ProjectReference Include="..\Servicio\Servicio.csproj" />
+	</ItemGroup>
+</Project>

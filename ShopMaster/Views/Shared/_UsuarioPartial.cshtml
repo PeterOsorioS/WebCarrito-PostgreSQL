@@ -1,0 +1,37 @@
+﻿@using System.Security.Claims
+@{
+    var userName = User.FindFirst(ClaimTypes.Actor)?.Value;
+    var role = User.FindFirst(ClaimTypes.Role)?.Value;
+    var idusuario = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+}
+<div id="userData" data-idusuario="@idusuario"></div>
+
+<a class="nav-link dropdown-toggle ms-3 text-dark" href="#" id="userDropdown" role="button"
+   data-bs-toggle="dropdown" data-bs-target="#collapseLayouts" aria-haspopup="true" aria-expanded="false">
+    <span class="mr-2 d-none font-weight-bold d-lg-inline"> @userName</span>
+    <i class="fa-solid fa-user"></i>
+</a>
+<div class="dropdown-menu dropdown-menu-right animated--grow-in sidebar-toggled shadow"
+     aria-labelledby="userDropdown">
+    @if (role != "Cliente")
+    {
+        <a class="dropdown-item" asp-area="Resumen" asp-controller="Dashboard" asp-action="Index">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            Dashboard
+        </a>
+    }
+    <a class="dropdown-item" asp-area="Tienda" asp-controller="Home" asp-action="MisCompras">
+        <i class="fa-solid fa-bag-shopping"></i>
+        Mis Compras
+    </a>
+    <button class="dropdown-item" data-toggle="modal" data-target="#modal_perfil_usuario" onclick="Perfil_Usuario(@idusuario)">
+        <i class="fas fa-cogs fa-sm fa-fw mr-2"></i>
+        Perfil
+    </button>
+
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" asp-area="Acceso" asp-controller="Auth" asp-action="Salir" data-toggle="modal" data-target="#logoutModal">
+        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
+        Cerrar Sesion
+    </a>
+</div>

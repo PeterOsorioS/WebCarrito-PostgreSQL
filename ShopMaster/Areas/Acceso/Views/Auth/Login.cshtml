@@ -1,0 +1,70 @@
+﻿@model Entidad.Usuario;
+@{
+    ViewData["Title"] = "Iniciar Sesion";
+}
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ShopMaster</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" />
+</head>
+<body class="bg-blue">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden my-5 border-0 shadow-lg">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">¡Bienvenido de nuevo!</h1>
+                                    </div>
+                                    <form id="loginForm" method="post" class="user">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user"
+                                                   asp-for="Correo" aria-describedby="emailHelp"
+                                                   placeholder="Ingresa el correo">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                                   asp-for="Clave" placeholder="Contraseña">
+                                        </div>
+                                        <div id="mensajeError" class="alert alert-danger" role="alert" style="display: none;">
+
+                                        </div>
+                                        <button id="loginBtn" class="btn btn-primary btn-user btn-block">
+                                            Iniciar Sesión
+                                        </button>
+                                        <hr>
+                                        <a asp-controller="Auth" asp-action="Register" class="btn btn-danger btn-user btn-block">
+                                            Registrarse
+                                        </a>
+                                        <hr />
+                                    </form>
+                                    <div class="text-center">
+                                        <a asp-area="Tienda" asp-controller="Home" asp-action="Index" class="text-decoration-none">Volver a la Tienda</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/3.2.1/jquery.serializejson.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.5/sweetalert2.min.js"></script>
+    <script src="~/js/Autenticacion.js"></script>
+</body>
+</html>

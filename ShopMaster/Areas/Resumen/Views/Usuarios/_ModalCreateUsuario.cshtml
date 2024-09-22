@@ -1,0 +1,50 @@
+﻿@model Entidad.ViewModel.UsuarioVm
+
+<div class="modal fade" id="modal_create_usuario" role="dialog" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form id="createUserForm" asp-area="Resumen" asp-controller="Usuarios" asp-action="Create" method="post">
+                @Html.AntiForgeryToken()
+                <div class="modal-header bg-blue text-white">
+                    <h5 class="modal-title"><i class="fa-solid fa-circle-user"></i> Crear Usuario</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label><strong>Nombres:</strong></label>
+                        <input id="nombresN" asp-for="usuario.Nombres" class="form-control form-control-user" placeholder="Ingresar los Nombres" name="usuario.Nombres" />                    
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Apellidos:</strong></label>
+                        <input id="apellidosN" asp-for="usuario.Apellidos" class="form-control form-control-user" placeholder="Ingresar los Apellidos" name="usuario.Apellidos" />                  
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Correo:</strong></label>
+                        <input id="correoN" type="email" asp-for="usuario.Correo" class="form-control form-control-user" placeholder="Ingresar el Correo" name="usuario.Correo" />
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Clave:</strong></label>
+                        <input id="claveN" type="password" asp-for="usuario.Clave" class="form-control form-control-user" placeholder="Ingresar la Clave" name="usuario.Clave" />
+                    </div>
+                    <div class="form-group row align-items-center">
+                        <div class="col-4"><strong>Seleccionar rol:</strong></div>
+                        <div class="col-8">
+                            @Html.DropDownListFor(m => m.usuario.IdRol, Model.rol, "-Por favor seleccione el rol-", new { @class = "form-control", id = "IdRol" })
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <div id="mensajeError" class="alert alert-danger" role="alert" style="display: none;">
+                                <!-- Los mensajes de error se mostrarán aquí -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="saveChangesCreate" class="btn btn-secondary">Guardar cambios</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+﻿@model Entidad.ViewModel.ProductoVm
+
+<div class="modal fade" id="modal_edit_producto" role="dialog" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form id="editProductForm" asp-area="Mantenimiento" asp-controller="Productos" asp-action="EditProducto" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <input type="hidden" id="IdProducto" name="producto.IdProducto" asp-for="producto.IdProducto" />
+                <input type="hidden" id="FechaRegistro" name="producto.FechaRegistro" asp-for="producto.FechaRegistro" />
+                <input type="hidden" id="NombreImagen" name="producto.NombreImagen" asp-for="producto.NombreImagen" />
+
+                <div class="modal-header bg-blue text-white">
+                    <h5 class="modal-title"><i class="fa-solid fa-box-open"></i> Editar Producto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                      <label><strong>ID:</strong> @Model.producto.IdProducto</label>
+                    </div>
+                     <div class="form-group">
+                      <label><strong>Fecha Creacion:</strong> @Model.producto.FechaRegistro.ToString("dd/MM/yyyy")</label>
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Nombre:</strong></label>
+                        <input asp-for="producto.Nombre" name="producto.Nombre" id="Nombre" class="form-control form-control-user" placeholder="Ingresar el nombre" />
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Descripción:</strong></label>
+                        <textarea id="Descripcion" name="producto.Descripcion" asp-for="producto.Descripcion" class="form-control form-control-user" placeholder="Ingresar la descripción" style="resize:none;"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Categoría:</strong></label>
+                        @Html.DropDownListFor(m => m.producto.IdCategoria, Model.ListaCategorias, "-Por favor seleccione una categoría-", new { @class = "form-control", id = "IdCategoria" })
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Marca:</strong></label>
+                        @Html.DropDownListFor(m => m.producto.IdMarca, Model.ListaMarcas, "-Por favor seleccione una marca-", new { @class = "form-control", id = "IdMarca" })
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Precio:</strong></label>
+                        <input asp-for="producto.Precio" name="producto.Precio" id="Precio" class="form-control form-control-user" />
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Stock:</strong></label>
+                        <input asp-for="producto.Stock" name="producto.Stock" id="Stock" class="form-control form-control-user" />
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Activo:</strong></label>
+                        <input type="checkbox" asp-for="producto.Activo" name="producto.Activo" id="Activo" />
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Imagen:</strong></label>
+                        <input type="file" name="archivos" id="subidaArchivo" class="form-control" />
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <div id="mensajeError" class="alert alert-danger" role="alert" style="display: none;">
+                                <!-- Los mensajes de error se mostrarán aquí -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-3 d-flex flex-column align-items-center">
+                        <div class="col-4">
+                            <label><strong>Imagen Actual:</strong></label>
+                        </div>
+                        <img src="@Model.producto.RutaImagen" class="custom-input p-3 mb-3" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="saveChanges" class="btn btn-secondary">Guardar cambios</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

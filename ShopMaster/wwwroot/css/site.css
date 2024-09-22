@@ -1,0 +1,98 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.color-green {
+    color: #008000;
+}
+
+.color-red {
+    color: #FF0000;
+}
+.text-blue {
+    color: #1F5DAB !important;
+}
+.bg-blue {
+    background-color: #1F5DAB;
+}
+
+    .bg-blue .btn22 {
+        background-color: #4F659D;
+    }
+
+.btn-blue {
+    color: #fff;
+    background-color: #2E6FBD;
+    border-color: #204C82;
+}
+
+
+.lg-0 {
+    line-height: 1.2 !important;
+    vertical-align: central;
+}
+
+.lg-1 {
+    line-height: 1.5 !important;
+    vertical-align: central;
+}
+
+.CreateSize {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .CreateSize {
+        width: 50%;
+    }
+}
+
+.icono-input {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+}
+
+.inputDato {
+    border-radius: 8px;
+    border: 0,5px solid #000;
+}
+
+.font-segoe {
+    font-family: "Segoe UI";
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+.custom-input {
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #bbb9b9;
+}
+.p-0-3 {
+    padding: 15px 1.6rem;
+}
+
+.breadcrumb.no-bg {
+    background-color: transparent; /* Eliminar el color de fondo */
+}
+.weight-600{
+    font-weight:600;
+}
+.large{
+    font-size: large !important;
+}
+

@@ -1,0 +1,39 @@
+﻿@model Slider
+<div class="modal fade" id="modal_create_slider" role="dialog" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form asp-area="Resumen" id="createSliderForm" asp-controller="Slider" asp-action="Create" method="POST" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="modal-header bg-blue text-white">
+                    <h5 class="modal-title"> <i class="fa-solid fa-panorama"></i> Crear Slider</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label><strong>Descripcion:</strong></label>
+                        <input asp-for="Descripcion" class="form-control form-control-user" placeholder="Ingresar el nombre" />
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Activo:</strong></label>
+                        <input type="checkbox" asp-for="Activo" />
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Imagen:</strong></label>
+                        <input type="file" name="archivos" id="subidaArchivo" class="form-control" />
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <div id="mensajeError" class="alert alert-danger" role="alert" style="display: none;">
+                                <!-- Los mensajes de error se mostrarán aquí -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="saveChangesCreate" class="btn btn-secondary">Guardar cambios</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

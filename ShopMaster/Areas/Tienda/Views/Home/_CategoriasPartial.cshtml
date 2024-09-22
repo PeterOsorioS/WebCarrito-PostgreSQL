@@ -1,0 +1,22 @@
+﻿@model Entidad.ViewModel.HomeVm
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="mb-4 text-center">
+            <span class="border-bottom-blue h1 text-section" style="display: inline-block; border-bottom: 3px solid #007bff; padding-bottom: 5px;">
+                Categorías
+            </span>
+         </h2>
+        <div class="row row-cols-2 row-cols-md-4 g-4">
+            @foreach (var categoria in Model.Categorias)
+            {
+                <div class="col card-wrapper text-center">
+                    <a href="@Url.Action("Productos", "Home", new { CategoriasFiltradas  = new List<int> {categoria.IdCategoria }})" class="text-decoration-none card align-items-center flex-column-reverse">
+                        <p class="mt-2 text-black">@categoria.Descripcion</p>
+                        <img class="w-25 pt-2" src="@categoria.RutaImagen"/>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>

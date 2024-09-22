@@ -1,0 +1,74 @@
+﻿@model Entidad.ViewModel.CarritoVm;
+@{
+    ViewData["Title"] = "Carrito de Compras";
+}
+
+<section class="my-5 container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Sección de productos -->
+                        <div class="col-lg-9 mb-4">
+                            <h5 class="d-flex justify-content-between">Detalle Carrito</h5>
+                            <hr class="mt-2 mb-4" />
+                            <div id="productos-container">
+                                <!-- Producto (puedes replicar esta tarjeta con JS o back-end para múltiples productos) -->
+
+                            </div>
+                        </div>
+
+                        <!-- Sección de detalle de envío -->
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body bg-light">
+                                    <h5>Detalle Envío</h5>
+                                    <form>
+                                        @Html.AntiForgeryToken();
+                                        <!-- Campo de Departamento -->
+                                        <div class="mb-2">
+                                            <label for="departamento" class="form-label">Departamento:</label>
+                                            @Html.DropDownListFor(d => d.Departamenots, Model.Departamenots,
+                                                     "-Por favor seleccione una departamento-", new { @class = "form-control", id = "departamento" })
+                                        </div>
+                                        <!-- Campo de Municipio -->
+                                        <div class="mb-2">
+                                            <label for="municipio" class="form-label">Municipio:</label>
+                                            @Html.DropDownListFor(m => m.Municipios, Model.Municipios,
+                                                     "-Por favor seleccione una municipio-", new { @class = "form-control", id = "municipio" })
+                                        </div>
+                                        <!-- Nombre de contacto -->
+                                        <div class="mb-2">
+                                            <label for="nombre" class="form-label">Nombre contacto:</label>
+                                            <input type="text" id="contacto" class="form-control form-control-sm" />
+                                        </div>
+                                        <!-- Dirección -->
+                                        <div class="mb-2">
+                                            <label for="direccion" class="form-label">Dirección:</label>
+                                            <input type="text" id="direccion" class="form-control form-control-sm" />
+                                        </div>
+                                        <!-- Teléfono -->
+                                        <div class="mb-2">
+                                            <label for="telefono" class="form-label">Teléfono:</label>
+                                            <input type="tel" id="telefono" class="form-control form-control-sm" />
+                                        </div>
+                                        <!-- Botón de pago -->
+                                        <div class="d-grid">
+                                            <button id="finalizarCompraBtn" type="button" class="btn btn-success rounded">
+                                                Realizar pago
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    <script src="/js/gestionCompras.js"></script>
+}

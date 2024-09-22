@@ -1,0 +1,39 @@
+﻿@model Entidad.ViewModel.ProductFilterVM
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+        @if (Model.productos.Count() > 0)
+        {
+            foreach (var producto in Model.productos)
+            {
+                <div class="col d-flex align-items-stretch card-style-link card-wrapper ProductoTienda"
+                     data-aos="fade-up" data-aos-duration="1000" data-target="#modal_detalle_producto"
+                     data-product-id="@producto.IdProducto">
+                    <div class="card h-100 border-1 text-center shadow-sm" style="min-height: 400px;">
+                        <div class="position-relative">
+                            @if (producto.Stock == 0)
+                            {
+                                <span class="badge bg-danger position-absolute top-0 start-0 m-2">Agotado</span>
+                            }
+                            <img src="@producto.RutaImagen" class="card-img-top" alt="Producto" style="object-fit: contain; height: 180px;">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title" style="font-size: 1.2rem;">@producto.Nombre</h5>
+                                <p class="card-text fs-4 fw-bold">@producto.Precio.ToString("$#,0")</p>
+                            </div>
+                            <partial name="_BtnCarritoPartial" model="producto"></partial>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <p class="text-center">No se encontraron productos</p>
+            </div>
+        }
+    </div>
+</div>
+
+

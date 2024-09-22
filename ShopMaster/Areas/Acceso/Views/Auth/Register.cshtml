@@ -1,0 +1,89 @@
+﻿@model Entidad.Usuario;
+@{
+    ViewData["Title"] = "Registrarse";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ShopMaster</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.5/sweetalert2.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+</head>
+<body class="bg-blue">
+
+<div class="container">
+        <div class="card o-hidden my-5 border-0 shadow-lg">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Crea una cuenta!</h1>
+                            </div>
+                            <form asp-action="Register" method="Post" class="user">
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input asp-for="Nombres" class="form-control form-control-user" placeholder="Ingresa el nombre">
+                                    </div>
+                                    <div class="col-sm-6">
+                                         <input asp-for="Apellidos" class="form-control form-control-user" placeholder="Ingresa el apellido">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                     <input type="email" asp-for="Correo" class="form-control form-control-user" placeholder="Ingresa el correo electronico">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password" asp-for="Clave" class="form-control form-control-user" placeholder="Ingresa la contraseña">
+                                    </div>
+                                          <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password" asp-for="ConfirmarClave" class="form-control form-control-user" placeholder="Confirma la contraseña">
+                                    </div>
+                                </div>
+                                <div >
+                                    <div id="ErrorMessage" class="alert-danger rounded" asp-validation-summary="All"></div>
+                                </div>
+                                <button asp-action="Register"  class="btn btn-danger btn-user btn-block">
+                                    Registrar Cuenta
+                                </button>
+                                <a asp-controller="Auth" asp-action="Login" class="btn btn-primary btn-user btn-block">
+                                    Iniciar Sesion
+                                </a>
+                                <hr>
+                            </form>
+                            <div class="text-center">
+                                <a asp-area="Tienda" asp-controller="Home" asp-action="Index" class="text-decoration-none">Volver a la Tienda</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/3.2.1/jquery.serializejson.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.5/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+</body>
+</html>

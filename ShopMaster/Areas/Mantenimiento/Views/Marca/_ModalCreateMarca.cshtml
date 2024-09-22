@@ -1,0 +1,35 @@
+﻿@model Entidad.Categoria
+<div class="modal fade" id="modal_create_marca" role="dialog" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form id="createMarcaForm" asp-area="Mantenimiento" asp-controller="Marca" asp-action="Create" method="post">
+                @Html.AntiForgeryToken()
+                <div class="modal-header bg-blue text-white">
+                    <h5 class="modal-title"><i class="fa-brands fa-slack"></i> Crear Marca</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label><strong>Descripcion:</strong></label>
+                        <input id="Descripcion" asp-for="Descripcion" class="form-control form-control-user" placeholder="Ingresar la descripcion" name="Descripcion" />
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Activo:</strong></label>
+                        <input id="Activo" name="Activo" type="checkbox" asp-for="Activo" />
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <div id="mensajeError" class="alert alert-danger" role="alert" style="display: none;">
+                                <!-- Los mensajes de error se mostrarán aquí -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="saveChangesCreate" class="btn btn-secondary">Guardar cambios</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

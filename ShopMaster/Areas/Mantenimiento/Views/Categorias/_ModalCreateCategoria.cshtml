@@ -1,0 +1,40 @@
+﻿@model Entidad.Categoria
+
+<div class="modal fade" id="modal_create_categoria" role="dialog" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form id="createCategoryForm" asp-area="Mantenimiento" asp-controller="Categorias" asp-action="Create" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="modal-header bg-blue text-white">
+                    <h5 class="modal-title"> <i class="fa-solid fa-layer-group"></i> Crear Categoria</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label><strong>Descripción:</strong></label>
+                        <input id="Descripcion" asp-for="Descripcion" class="form-control form-control-user" placeholder="Ingresar la descripción" name="Descripcion" />
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Activo:</strong></label>
+                        <input id="Activo" name="Activo" type="checkbox" asp-for="Activo" />
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Imagen:</strong></label>
+                        <input asp-for="RutaImagen" type="file" name="RutaImagen" id="subidaArchivo" class="form-control" />
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <div id="mensajeError" class="alert alert-danger" role="alert" style="display: none;">
+                                <!-- Los mensajes de error se mostrarán aquí -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="saveChangesCreate" class="btn btn-secondary">Guardar cambios</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

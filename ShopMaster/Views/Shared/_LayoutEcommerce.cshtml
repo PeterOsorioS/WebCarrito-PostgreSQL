@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ShopMaster</title>
+    @*  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" /> *@
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Eccommers.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.5/sweetalert2.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="no-margin-padding">
+
+    <!-- Header -->
+    <!-- Header -->
+    <header class="bg-white py-3 mb-4">
+        <div class="d-flex justify-content-between align-items-center pt-2 container">
+            <!-- Logo -->
+            <a asp-area="Tienda" asp-controller="Home" asp-action="Index" class="d-flex align-items-center">
+                <img src="/imagenes/logo-home-master-store.png" alt="Logo">
+            </a>
+
+            <!-- Menú para pantallas grandes -->
+            <nav class="d-none d-md-flex align-items-center">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a asp-area="Tienda" asp-controller="Home" asp-action="Index" class="nav-link text-dark">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-area="Tienda" asp-controller="Home" asp-action="Productos" class="nav-link text-dark">Productos</a>
+                    </li>
+                    <!-- Añadir más enlaces según sea necesario -->
+                </ul>
+                <div class="d-flex align-items-center ms-3">
+                    <a asp-area="Tienda" asp-controller="Home" asp-action="Carrito" class="text-dark position-relative">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cantidadCarrito" class="badge bg-danger rounded-circle position-absolute top-0 start-100 translate-middle"></span>
+                    </a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <partial class="text-dark" name="_UsuarioPartial" />
+                    }
+                    else
+                    {
+                        <a asp-area="Acceso" asp-controller="Auth" asp-action="Login" class="btn btn-outline-blue ms-5">
+                            Iniciar Sesión
+                        </a>
+                        <a asp-area="Acceso" asp-controller="Auth" asp-action="Register" class="btn btn-outline-blue ms-1">
+                            Registrarse
+                        </a>
+                    }
+                </div>
+            </nav>
+
+            <!-- Botones para pantallas pequeñas -->
+            <div class="d-md-none d-flex align-items-center">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <partial class="text-dark" name="_UsuarioPartial" />
+                }
+                <button asp-action="Carrito" class="btn btn-outline-blue" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menú offcanvas para pantallas pequeñas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasMenuLabel">Menú</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column align-items-center">
+            <ul class="nav flex-column align-items-center mb-2 text-center">
+                <li class="nav-item mb-2">
+                    <a asp-area="Tienda" asp-controller="Home" asp-action="Index" class="nav-link text-dark">Inicio</a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a asp-area="Tienda" asp-controller="Home" asp-action="Productos" class="nav-link text-dark">Productos</a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a asp-action="Carrito" id="cantidadCarrito" class="nav-link text-dark">
+                        Carrito
+                        <i class="fa-solid fa-cart-shopping small" id="cantidadCarrito"></i>
+                    </a>
+                </li>
+                <!-- Añadir más enlaces según sea necesario -->
+            </ul>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="d-flex flex-column align-items-center">
+                    <a asp-area="Acceso" asp-controller="Auth" asp-action="Login" class="btn btn-outline-primary mb-2">
+                        Iniciar Sesión
+                    </a>
+                    <a asp-area="Acceso" asp-controller="Auth" asp-action="Register" class="btn btn-outline-primary">
+                        Registrarse
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+
+    @if (ViewBag.IsHome == true)
+    {
+        <partial name="_Slider" />
+    }
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+
+
+    <div id="ContenedorModalPerfilUsuario"></div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5 footer-fix">
+        <div class="container">
+            <!-- Derechos reservados -->
+            <div class="py-3 text-center">
+                <p>&copy; 2024 ShopMaster.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/eccommers.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/3.2.1/jquery.serializejson.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.5/sweetalert2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

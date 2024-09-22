@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Entidad.Venta>
+@{
+    ViewData["Title"] = "Mis Compras";
+}
+<section class="my-5 container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-lg">
+                <div class="card-body table-responsive">
+                    <h5 class="text-start">
+                        Mis Compras
+                    </h5>
+                    <hr class="mt-2 mb-4" />
+                    @if (Model.Any())
+                    {
+                        <table id="tbl" class="table-hover table-bordered table rounded">
+                            <thead>
+                                <tr class="p-3 mb-5 rounded shadow-sm">
+                                    <th class="text-start">Id Venta</th>
+                                    <th class="text-start">Fecha</th>
+                                    <th class="text-start">Total Productos</th>
+                                    <th class="text-start">Monto Total</th>
+                                    <th class="text-start">Detalles</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var venta in Model)
+                                {
+                                    <tr>
+                                        <td class="text-start">@venta.IdVenta</td>
+                                        <td class="text-start">@venta.FechaVenta.ToString("dd/MM/yyyy")</td>
+                                        <td class="text-start">@venta.TotalProducto</td>
+                                        <td class="text-start">@venta.MontoTotal.ToString("$#,0")</td>
+                                        <td class="text-start">
+                                            <a href="@Url.Action("ResumenCompra", "Home", new { id = venta.IdVenta })" class="btn btn-blue btn-sm">
+                                                Ver Detalles
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p class="text-start">No tienes compras registradas.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

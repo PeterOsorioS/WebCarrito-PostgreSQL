@@ -1,0 +1,54 @@
+﻿@model Entidad.ViewModel.ProductoVm
+<div class="modal fade" id="modal_create_producto" role="dialog" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <form asp-area="Mantenimiento"  id="createProductForm" asp-controller="Productos" asp-action="Create" method="POST" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="modal-header bg-blue text-white">
+                    <h5  class="modal-title"> <i class="fa-solid fa-box"></i> Crear Producto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label><strong>Nombre:</strong></label>
+                        <input asp-for="producto.Nombre" class="form-control form-control-user" placeholder="Ingresar el nombre"/>
+                  </div>
+                    <div class="form-group">
+                       <label><strong>Descripcion:</strong></label>
+                        <textarea asp-for="producto.Descripcion" id="editorDescripcion"  name="Descripcion" class="form-control form-control-user" style="height: 100px;" placeholder="Ingresar la descripcion"></textarea>
+                    </div>
+                    <div class="form-group">
+                          <label><strong>Categoria:</strong></label>
+                          @Html.DropDownListFor(m => m.producto.IdCategoria, Model.ListaCategorias,
+                             "-Por favor seleccione una categoría-", new { @class = "form-control" })
+                    </div>
+                      <div class="form-group">
+                          <label><strong>Marca:</strong></label>
+                          @Html.DropDownListFor(m => m.producto.IdMarca, Model.ListaMarcas,
+                          "-Por favor seleccione una marca-", new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label><strong>Precio:</strong></label>
+                        <input asp-for="producto.Precio" value="@Model.producto.Precio.ToString("F0")" class="form-control form-control-user" />
+                   </div>
+                     <div class="form-group">
+                        <label><strong>Stock:</strong></label>
+                       <input asp-for="producto.Stock" class="form-control form-control-user"/>
+                   </div>
+                    <div class="form-group">
+                        <label><strong>Activo:</strong></label>
+                        <input type="checkbox" asp-for="producto.Activo" />
+                    </div>
+                     <div class="form-group">
+                        <label><strong>Imagen:</strong></label>
+                         <input type="file" name="archivos" id="subidaArchivo" class="form-control" />
+                    </div>          
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="saveChangesCreate" class="btn btn-secondary">Guardar cambios</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+                </div>
+          </form>
+        </div>
+    </div>
+</div>

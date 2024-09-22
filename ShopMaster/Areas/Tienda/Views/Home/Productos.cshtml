@@ -1,0 +1,81 @@
+﻿@model Entidad.ViewModel.ProductFilterVM
+@{
+    ViewData["Title"] = "Inicio";
+}
+<h2 class="mt-2 py-5 text-center">
+    <span class="border-bottom-orange h1 text-section" style="display: inline-block; border-bottom: 3px solid #007bff; padding-bottom: 5px;">
+        Todos los Productos
+    </span>
+</h2>
+<section class="py-2 pb-5 bg-white">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-3">
+                <form id="formBuscar" asp-area="Tienda" asp-controller="Home" asp-action="BuscarProductosPorFiltro" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header bg-blue fw-600">
+                                    Categorías
+                                </div>
+                                <div class="card-body" id="_contenedorCategoria">
+                                    @foreach (var item in Model.categorias)
+                                    {
+                                        bool isChecked = ViewBag.CategoriasFiltradas != null &&
+                                        ((List<int>)ViewBag.CategoriasFiltradas).Contains(item.IdCategoria);
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="CategoriasFiltradas" value="@item.IdCategoria" id="categoria_@item.IdCategoria"
+                                            @(isChecked ? "checked" : "") />
+                                            <label class="form-check-label" for="categoria_@item.IdCategoria">
+                                                @item.Descripcion
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header fw-600 bg-blue">
+                                    Marcas
+                                </div>
+                                <div class="card-body" id="_contenedorMarca">
+                                    @foreach (var item in Model.marcas)
+                                    {
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="MarcasFiltradas" value="@item.IdMarca" id="marca_@item.IdMarca" />
+                                            <label class="form-check-label" for="marca_@item.IdMarca">
+                                                @item.Descripcion
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-blue fw-600" type="submit" id="btnAplicarFiltros">
+                                    <i class="fa-solid fa-filter"></i> Aplicar filtros
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-9" id="product">
+                <partial name="_ProductoPartial" />
+            </div>
+        </div>
+    </div>
+</section>
+<div id="ContenedorModalDetalleProducto"></div>
+@section Scripts {
+    <script src="/js/gestionCompras.js"></script>
+}
