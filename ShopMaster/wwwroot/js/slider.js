@@ -4,8 +4,8 @@
     }
 
     function getProductFormData() {
-        var formData = new FormData();
-        var files = $('#subidaArchivo').prop('files');
+        let formData = new FormData();
+        let files = $('#subidaArchivo').prop('files');
 
         formData.append("ID", $('#ID').val());
         formData.append("Descripcion", $('#Descripcion').val());
@@ -30,7 +30,7 @@
               
 
                 $('#saveChanges').off('click').on('click', function () {
-                    var formData = getProductFormData();
+                    let formData = getProductFormData();
 
                     $(".modal-body").LoadingOverlay("show", {
                         text: "Cargando...",
@@ -94,8 +94,8 @@ $(document).ready(function () {
                 });
 
                 $('#saveChangesCreate').off('click').on('click', function () {
-                    var form = $('#createSliderForm')[0];
-                    var formData = new FormData(form);
+                    let form = $('#createSliderForm')[0];
+                    let formData = new FormData(form);
 
 
 

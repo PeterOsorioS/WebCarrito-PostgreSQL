@@ -14,9 +14,9 @@
     $("#formBuscar").submit(function (event) {
         event.preventDefault(); 
 
-        var form = $(this);
-        var url = form.attr('action');
-        var token = $('input[name="__RequestVerificationToken"]').val();
+        let form = $(this);
+        let url = form.attr('action');
+        let token = $('input[name="__RequestVerificationToken"]').val();
         $.ajax({
             type: "POST",
             url: url,
@@ -47,7 +47,7 @@
     $(document).on('click', '.ProductoTienda',function (event) {
         event.stopPropagation(); 
         if (!$(event.target).hasClass('add-to-cart-btn')) {
-            var productId = $(this).data('product-id');
+            let productId = $(this).data('product-id');
             DetalleProducto(productId);
         }
         
@@ -73,7 +73,7 @@ $(document).ready(function () {
 });
 
 function cargarDatatable() {
-    var dataTable = $("#tbl").DataTable({
+    let dataTable = $("#tbl").DataTable({
         responsive: true,
         ordering: 'desc',
         "language": {

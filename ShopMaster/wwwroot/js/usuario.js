@@ -25,7 +25,7 @@
                 $('#modal_detalle_usuario').modal('show');
                 $('#mensajeError').hide();
 
-                var antiForgeryToken = getAntiForgeryToken();
+                let antiForgeryToken = getAntiForgeryToken();
 
                 $('#editUserForm').on('keydown', function (event) {
                     if (event.key === "Enter") {
@@ -35,8 +35,8 @@
                 });
 
                 $('#saveChanges').off('click').on('click', function () {
-                    var formData = getFormData();
-                    var formDataObject = new FormData();
+                    let formData = getFormData();
+                    let formDataObject = new FormData();
 
                     $.each(formData, function (key, value) {
                         formDataObject.append('usuario.' + key, value);
@@ -67,7 +67,7 @@
 
                                 updateUserInList(formData);
                             } else {
-                                var errorMessages = [];
+                                let errorMessages = [];
                                 if (response.errors) {
                                     // Suponiendo que response.errors es un array de mensajes de error
                                     response.errors.forEach(function (message) {
@@ -84,7 +84,7 @@
                         },
                         error: function (xhr) {
                             setTimeout(function () {
-                                var errorMessage = xhr.responseJSON ? xhr.responseJSON.message : 'Ocurrió un error.';
+                                let errorMessage = xhr.responseJSON ? xhr.responseJSON.message : 'Ocurrió un error.';
                                 toastr.error(errorMessage);
                                 $(".modal-body").LoadingOverlay("hide");
                             }, 1300);
@@ -96,7 +96,7 @@
     };
 
     function updateUserInList(user) {
-        var userRow = $('#user_' + user.IdUsuario);
+        let userRow = $('#user_' + user.IdUsuario);
         if (userRow.length) {
             userRow.find('.user-nombres').text(user.Nombres);
             userRow.find('.user-apellidos').text(user.Apellidos);
@@ -119,7 +119,7 @@ $(document).ready(function () {
                 $('#modal_create_usuario').modal('show');
                 $('#mensajeError').hide();
 
-                var antiForgeryToken = getAntiForgeryToken();
+                let antiForgeryToken = getAntiForgeryToken();
 
                 $('#createUserForm').on('keydown', function (event) {
                     if (event.key === "Enter") {
@@ -130,7 +130,7 @@ $(document).ready(function () {
 
                 $('#saveChangesCreate').off('click').on('click', function () {
 
-                    var formData = new FormData();
+                    let formData = new FormData();
                     formData.append("usuario.Nombres", $('#nombresN').val());
                     formData.append("usuario.Apellidos", $('#apellidosN').val());
                     formData.append("usuario.Correo", $('#correoN').val());
@@ -165,7 +165,7 @@ $(document).ready(function () {
                                     });
                                 }, 1500);
                             } else {
-                                var errorMessages = [];
+                                let errorMessages = [];
                                 if (response.errors) {
                                     // Suponiendo que response.errors es un array de mensajes de error
                                     response.errors.forEach(function (message) {

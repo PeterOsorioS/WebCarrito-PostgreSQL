@@ -11,7 +11,7 @@
                 $('#ContenedorModalEditMarca').html(data);
                 $('#modal_edit_marca').modal('show');
 
-                var antiForgeryToken = getAntiForgeryToken();
+                let antiForgeryToken = getAntiForgeryToken();
                 $('#editMarcaForm').on('keydown', function (event) {
                     if (event.key === "Enter") {
                         event.preventDefault();
@@ -20,7 +20,7 @@
                 });
 
                 $('#saveChanges').off('click').on('click', function () {
-                    var formData = {
+                    let formData = {
                         IdMarca: $('#IdMarca').val(),
                         Descripcion: $('#Descripcion').val(),
                         Activo: $('#Activo').is(':checked')
@@ -61,13 +61,13 @@
                                 updateMarcaInList(formData);
                             } else {
                
-                                var errors = Array.isArray(response.errors) ? response.errors : [response.errors];
+                                let errors = Array.isArray(response.errors) ? response.errors : [response.errors];
                                 toastr.error(errors.join(', '));
                             }
                         },
                         error: function (xhr) {
                             $(".modal-body").LoadingOverlay("hide");
-                            var errorMessage = xhr.responseJSON ? xhr.responseJSON.message : 'Ocurrió un error.';
+                            let errorMessage = xhr.responseJSON ? xhr.responseJSON.message : 'Ocurrió un error.';
                             toastr.error(errorMessage);
                         }
                     });
@@ -80,7 +80,7 @@
     };
 
     function updateMarcaInList(marca) {
-        var marcaRow = $('#marca_' + marca.IdMarca);
+        let marcaRow = $('#marca_' + marca.IdMarca);
         if (marcaRow.length) {
             marcaRow.find('.marca-desc').text(marca.Descripcion);
             marcaRow.find('.marca-activo').html(marca.Activo ? '<i class="fa-solid fa-circle color-green"></i>' : '<i class="fa-solid fa-circle color-red"></i>');
@@ -107,8 +107,8 @@ $(document).ready(function () {
                 });
 
                 $('#saveChangesCreate').off('click').on('click', function () {
-                    var form = $('#createMarcaForm');
-                    var formData = form.serialize();
+                    let form = $('#createMarcaForm');
+                    let formData = form.serialize();
 
                     $(".modal-body").LoadingOverlay("show", {
                         text: "Cargando...",

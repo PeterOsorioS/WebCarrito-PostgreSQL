@@ -34,17 +34,17 @@ namespace AccesoDatos.Data.Inicializador
 
                 await _db.SaveChangesAsync();
             }
-            if (!(_db.Municipio.Any()&&_db.Departamentos.Any()))
+            if (!(_db.Municipio.Any() && _db.Departamentos.Any()))
             {
                 await _db.Departamentos.AddRangeAsync(
                     new Departamento { IdDepartamento = "1", Descripcion = "Antioquia" },
-                    new Departamento { IdDepartamento = "2", Descripcion = "Cundinamarca"},
+                    new Departamento { IdDepartamento = "2", Descripcion = "Cundinamarca" },
                     new Departamento { IdDepartamento = "3", Descripcion = "Valle del Cauca" }
                     );
                 await _db.Municipio.AddRangeAsync(
-              new Municipio { Descripcion ="Medellín", IdDepartamento = "1" },
-              new Municipio { Descripcion = "Bogotá ",IdDepartamento= "2"},
-              new Municipio { Descripcion = "Cali", IdDepartamento= "3" }
+              new Municipio { Descripcion = "Medellín", IdDepartamento = "1" },
+              new Municipio { Descripcion = "Bogotá ", IdDepartamento = "2" },
+              new Municipio { Descripcion = "Cali", IdDepartamento = "3" }
               );
             }
 

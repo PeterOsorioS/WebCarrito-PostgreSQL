@@ -1,13 +1,13 @@
 ﻿$(document).ready(function () {
-    var userId = $('#userData').data('idusuario');
-    var token = $('input[name="__RequestVerificationToken"]').val();
+    let userId = $('#userData').data('idusuario');
+    let token = $('input[name="__RequestVerificationToken"]').val();
 
    
  
     $(document).on('click', '.add-to-cart-btn', function (event) {
         event.stopPropagation();
-        var productId = $(this).data('product-id');
-        var button = $(this);
+        let productId = $(this).data('product-id');
+        let button = $(this);
 
 
         $.ajax({
@@ -50,8 +50,8 @@
     });
 
     function mostrarProductosEnCarrito() {
-        var datos = localStorage.getItem('carrito_' + userId);
-        var productos = [];
+        let datos = localStorage.getItem('carrito_' + userId);
+        let productos = [];
 
         try {
             productos = JSON.parse(datos) || [];
@@ -59,23 +59,23 @@
             console.error('Error al analizar los datos:', error);
         }
 
-        var productosContainer = $('#productos-container');
+        let productosContainer = $('#productos-container');
         if (productos.length === 0) {
             productosContainer.html('<p class="text-center">No hay productos en el carrito.</p>');
             return;
         }
-        var total = 0;
+        let total = 0;
         productosContainer.empty();
         productos.forEach(function (producto) {
        
-            var formatoPrecio = producto.Precio.toLocaleString('es-AR', {
+            let formatoPrecio = producto.Precio.toLocaleString('es-AR', {
                 style: 'currency',
                 currency: 'ARS',
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0
             });
 
-            var productoHtml = `
+            let productoHtml = `
                 <div class="card mb-3 card-producto">
                     <div class="card-body">
                         <div class="row g-3 align-items-center">
@@ -111,7 +111,7 @@
             productosContainer.append(productoHtml);
             total += producto.Precio * producto.Cantidad;
         });
-        var formatoTotal = total.toLocaleString('es-AR', {
+        let formatoTotal = total.toLocaleString('es-AR', {
             style: 'currency',
             currency: 'ARS',
             minimumFractionDigits: 0,
@@ -119,7 +119,7 @@
         });
 
   
-        var totalHtml = `
+        let totalHtml = `
             <div class="text-end">
                 <h5><strong>Total a pagar:</strong> ${formatoTotal}</h5>
             </div>
@@ -186,7 +186,7 @@
     $('#municipio option:first').prop('disabled', true);
 
     $('#finalizarCompraBtn').on('click', function () {
-        var carrito = JSON.parse(localStorage.getItem('carrito_' + userId)) || [];
+        let carrito = JSON.parse(localStorage.getItem('carrito_' + userId)) || [];
 
         if (carrito.length === 0) {
             toastr.error("No hay productos en el carrito.");
@@ -194,16 +194,15 @@
         }
 
 
-        var departamentoV = $('#departamento option:first').text();
-        var municipioV = $('#municipio option:first').text();
+        let departamentoV = $('#departamento option:first').text();
+        let municipioV = $('#municipio option:first').text();
 
-        var departamento = $('#departamento option:selected').val();
-        var contacto = $('#contacto').val();
-        var telefono = $('#telefono').val();
-        var direccion = $('#direccion').val();
-        var departamento = $('#departamento option:selected').text();
-        var municipio = $('#municipio option:selected').text();
-        var DireccionCompleta = (`${direccion}, ${municipio}, ${departamento}`);
+        let contacto = $('#contacto').val();
+        let telefono = $('#telefono').val();
+        let direccion = $('#direccion').val();
+        let departamento = $('#departamento option:selected').val();
+        let municipio = $('#municipio option:selected').text();
+        let DireccionCompleta = (`${direccion}, ${municipio}, ${departamento}`);
 
         if (departamento == departamentoV || municipio == municipioV) {
             toastr.error("Por favor ingresar el departamento y municipio");
@@ -215,7 +214,7 @@
             return;
         }
 
-        var venta = {
+        let venta = {
             IdUsuario: userId,
             Contacto: contacto,
             Telefono: telefono,

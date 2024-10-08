@@ -11,7 +11,7 @@
     });
 
     $(window).resize(function () {
-        var windowWidth = $(window).width();
+        let windowWidth = $(window).width();
 
         if (windowWidth < 768) {
             $('.sidebar .collapse').collapse('hide');
@@ -27,7 +27,7 @@
 
     $('body.fixed-nav .sidebar').on('mousewheel DOMMouseScroll wheel', function (e) {
         if ($(window).width() > 768) {
-            var e0 = e.originalEvent,
+            let e0 = e.originalEvent,
                 delta = e0.wheelDelta || -e0.detail;
             this.scrollTop += (delta < 0 ? 1 : -1) * 30;
             e.preventDefault();
@@ -36,7 +36,7 @@
 
   
     $(document).on('scroll', function () {
-        var scrollDistance = $(this).scrollTop();
+        let scrollDistance = $(this).scrollTop();
         if (scrollDistance > 100) {
             $('.scroll-to-top').fadeIn();
         } else {
@@ -46,7 +46,7 @@
 
   
     $(document).on('click', 'a.scroll-to-top', function (e) {
-        var $anchor = $(this);
+        let $anchor = $(this);
         $('html, body').stop().animate({
             scrollTop: ($($anchor.attr('href')).offset().top)
         }, 1000, 'easeInOutExpo');
@@ -70,7 +70,7 @@ $(document).ready(function () {
 });
 
 function cargarDatatable() {
-    var dataTable = $("#tbl").DataTable({
+    let dataTable = $("#tbl").DataTable({
         responsive: true,
         ordering: 'desc',
         "language": {
@@ -81,8 +81,8 @@ function cargarDatatable() {
 }
 $(document).on('click', '.delete-user', function (e) {
     e.preventDefault();
-    var deleteUrl = $(this).data('url');
-    var row = $(this).closest('tr');
+    let deleteUrl = $(this).data('url');
+    let row = $(this).closest('tr');
     Swal.fire({
         title: "¿Estás seguro de borrar?",
         text: "Este contenido no se puede recuperar.",

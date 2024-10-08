@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
    
-    var today = new Date().toISOString().split('T')[0];
+    let today = new Date().toISOString().split('T')[0];
 
   
     $('#txtfechainicio').val(today);
@@ -9,8 +9,8 @@
     $("#formBuscar").submit(function (event) {
         event.preventDefault();
 
-        var form = $(this);
-        var url = form.attr('action');
+        let form = $(this);
+        let url = form.attr('action');
 
         $.ajax({
             type: "POST",

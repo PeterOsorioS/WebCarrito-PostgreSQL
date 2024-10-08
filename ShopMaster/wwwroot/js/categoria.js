@@ -6,8 +6,8 @@ $(document).ready(function () {
     }
 
     function getCategoriaFormData() {
-        var formData = new FormData();
-        var files = $('#subidaArchivo').prop('files');
+        let formData = new FormData();
+        let files = $('#subidaArchivo').prop('files');
 
      
         formData.append("IdCategoria", $('#IdCategoria').val());
@@ -32,7 +32,7 @@ $(document).ready(function () {
 
                 $('#saveChanges').off('click').on('click', function () {
 
-                    var formData = getCategoriaFormData();
+                    let formData = getCategoriaFormData();
 
                     $(".modal-body").LoadingOverlay("show", {
                         text: "Cargando...",
@@ -63,7 +63,7 @@ $(document).ready(function () {
                         },
                         error: function (xhr) {
                             setTimeout(function () {
-                                var errorMessage = xhr.responseJSON ? xhr.responseJSON.message : 'Ocurrió un error.';
+                                let errorMessage = xhr.responseJSON ? xhr.responseJSON.message : 'Ocurrió un error.';
                                 toastr.error(errorMessage);
                             }, 1300);
                         }
@@ -92,8 +92,8 @@ $(document).ready(function () {
                 });
 
                 $('#saveChangesCreate').off('click').on('click', function () {
-                    var form = $('#createCategoryForm')[0];
-                    var formData = new FormData(form);
+                    let form = $('#createCategoryForm')[0];
+                    let formData = new FormData(form);
 
 
 

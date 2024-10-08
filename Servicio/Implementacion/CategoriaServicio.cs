@@ -76,11 +76,11 @@ namespace Servicio.Implementacion
                 categoria.RutaImagen = await EditarImagen(categoria, archivo);
                 _contenedorTrabajo.Categoria.Update(categoria);
                 _contenedorTrabajo.Save();
-                return new OkObjectResult(new { success = true, message = "Producto actualizado correctamente." });
+                return new OkObjectResult(new { success = true, message = "Categoría actualizada correctamente." });
             }
             catch (Exception)
             {
-                return new BadRequestObjectResult(new { success = false, message = "Error al actualizar el producto." });
+                return new BadRequestObjectResult(new { success = false, message = "Error al actualizar la categoría." });
             }
 
         }

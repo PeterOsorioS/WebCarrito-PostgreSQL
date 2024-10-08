@@ -7,10 +7,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="wwwroot\imagenes\productos\imagenes\**" />
-	  <Content Remove="wwwroot\imagenes\productos\imagenes\**" />
-	  <EmbeddedResource Remove="wwwroot\imagenes\productos\imagenes\**" />
-	  <None Remove="wwwroot\imagenes\productos\imagenes\**" />
+		<Compile Remove="wwwroot\imagenes\productos\imagenes\**" />
+		<Content Remove="wwwroot\imagenes\productos\imagenes\**" />
+		<EmbeddedResource Remove="wwwroot\imagenes\productos\imagenes\**" />
+		<None Remove="wwwroot\imagenes\productos\imagenes\**" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="Areas\Acceso\Views\Auth\AccessDenied.cshtml" />

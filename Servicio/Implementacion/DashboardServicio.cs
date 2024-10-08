@@ -32,8 +32,8 @@ namespace Servicio.Implementacion
 
         public IEnumerable<Venta> BuscarVentasPorFechas(string fechainicio, string fechafin)
         {
-            DateTime fechaInicioParsed = DateTime.Parse(fechainicio);
-            DateTime fechaFinParsed = DateTime.Parse(fechafin);
+            DateTime fechaInicioParsed = DateTime.Parse(fechainicio).ToUniversalTime().Date;
+            DateTime fechaFinParsed = DateTime.Parse(fechafin).ToUniversalTime();
 
             var venta = ObtenerTodasLasVentas();
             venta = venta.Where(v => v.FechaVenta >= fechaInicioParsed && v.FechaVenta <= fechaFinParsed);

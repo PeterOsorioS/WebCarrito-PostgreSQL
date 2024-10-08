@@ -2,8 +2,8 @@
     $('#loginForm').on('submit', function (e) {
         e.preventDefault(); // Previene el envío por defecto del formulario
 
-        var correo = $('input[name="Correo"]').val();
-        var clave = $('input[name="Clave"]').val();
+        let correo = $('input[name="Correo"]').val();
+        let clave = $('input[name="Clave"]').val();
 
         // Resetear mensajes de error
         $('#mensajeError').hide();
@@ -19,7 +19,7 @@
         }
 
         // Serializar los datos del formulario
-        var formData = $(this).serialize();
+        let formData = $(this).serialize();
 
         // Enviar solicitud AJAX al servidor
         $.ajax({

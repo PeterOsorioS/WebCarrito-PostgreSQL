@@ -4,8 +4,8 @@
     }
 
     function getProductFormData() {
-        var formData = new FormData();
-        var files = $('#subidaArchivo').prop('files');
+        let formData = new FormData();
+        let files = $('#subidaArchivo').prop('files');
 
        
         formData.append("producto.IdProducto", $('#IdProducto').val());
@@ -45,7 +45,7 @@
                 });
 
                 $('#saveChanges').off('click').on('click', function () {
-                    var formData = getProductFormData();
+                    let formData = getProductFormData();
 
                     $(".modal-body").LoadingOverlay("show", {
                         text: "Cargando...",
@@ -77,7 +77,7 @@
                         },
                         error: function (xhr) {
                             setTimeout(function () {
-                                var errorMessage = xhr.responseJSON ? xhr.responseJSON.message : 'Ocurrió un error.';
+                                let errorMessage = xhr.responseJSON ? xhr.responseJSON.message : 'Ocurrió un error.';
                                 toastr.error(errorMessage);
                             }, 1300);
                         }
@@ -115,11 +115,11 @@ $(document).ready(function () {
                 });
 
                 $('#saveChangesCreate').off('click').on('click', function () {
-                    var form = $('#createProductForm')[0];
-                    var formData = new FormData(form);
+                    let form = $('#createProductForm')[0];
+                    let formData = new FormData(form);
 
                     // Obtén el contenido de TinyMCE
-                    var descripcionContent = tinymce.get('editorDescripcion').getContent();
+                    let descripcionContent = tinymce.get('editorDescripcion').getContent();
 
                     // Añadir el contenido de TinyMCE al formData
                     formData.append('producto.Descripcion', descripcionContent);
@@ -149,10 +149,10 @@ $(document).ready(function () {
                                 setTimeout(function () {
                                     $(".modal-body").LoadingOverlay("hide");
                                     $('#mensajeError').show();
-                                    var errorMessages = [];
+                                    let errorMessages = [];
 
                                     if (response.errors) {
-                                        for (var field in response.errors) {
+                                        for (let field in response.errors) {
                                             response.errors[field].forEach(function (message) {
                                                 errorMessages.push(`<strong>${field}</strong>: ${message}`);
                                             });
